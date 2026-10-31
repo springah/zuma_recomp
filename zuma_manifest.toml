@@ -1,0 +1,17 @@
+# ReXGlue manifest for zuma (Zuma, PopCap / Oberon Media, Xbox 360 XBLA 2005).
+#
+# Single-module title: only default.xex is recompiled. Function-entry seeds and
+# analysis tuning live in zuma_functions.toml (the analyzer misses some
+# indirect / computed-call targets; seed them there as they surface).
+#
+# Regenerate generated/ from this manifest with scripts/regen.sh.
+
+[project]
+name = "zuma"
+sdk_version = "0.9.2"
+game_root = "assets"
+
+[entrypoint]
+file_path = "assets/default.xex"
+out_directory_path = "generated/default"
+includes = ["zuma_functions.toml"]

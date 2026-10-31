@@ -1,0 +1,11 @@
+# Manual function hints for zuma (default.xex).
+#
+# Empty at bring-up. Seed entries here when the runtime reports
+# "Call to invalid or unregistered function" (pointer-table targets the static
+# scan missed) or when codegen mis-splits a function:
+#
+#   [functions]
+#   "0x8200XXXX" = {}                      # missed entry point
+#   "0x8200YYYY" = { end = 0x8200ZZZZ }    # corrected extent
+
+[functions]

@@ -1,0 +1,26 @@
+// Windows resource script for zuma.exe — embeds the file/product version.
+// Generated from this template by CMake (configure_file) with the project
+// version substituted. Add `1 ICON "@ZUMA_ICON_ABS@"` (and the matching
+// configure variable in CMakeLists.txt) once the port has an icon.
+
+1 VERSIONINFO
+FILEVERSION @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+PRODUCTVERSION @PROJECT_VERSION_MAJOR@,@PROJECT_VERSION_MINOR@,@PROJECT_VERSION_PATCH@,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "FileDescription", "Zuma (Xbox 360 XBLA PC recompilation)"
+      VALUE "FileVersion", "@PROJECT_VERSION@"
+      VALUE "ProductName", "Zuma"
+      VALUE "ProductVersion", "@PROJECT_VERSION@"
+      VALUE "OriginalFilename", "zuma.exe"
+      VALUE "InternalName", "zuma"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 1200
+  END
+END
