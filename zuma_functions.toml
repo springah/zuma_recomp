@@ -18,3 +18,4 @@
 # Cap each funclet right after its bl.
 "0x820BA330" = { end = 0x820BA388 }   # ran into sub_820BA390
 "0x820BDEF0" = { end = 0x820BDF48 }   # ran into sub_820BDF50
+"0x821F3370" = {}  # boot FATAL: unregistered call target (seed loop r1)

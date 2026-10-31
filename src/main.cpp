@@ -291,7 +291,13 @@ class ZumaApp : public rex::ReXApp {
   }
 
   void OnPreSetup(rex::RuntimeConfig& config) override {
-    (void)config;
+    // Since the SDK's v0.9 GPU-plugin split an empty gpu_plugin means "no GPU
+    // emulation at all" (the guest boots, then hangs before its first draw).
+    // Xenos emulation is this port's only renderer, so default to it; an
+    // explicit --gpu_plugin still wins.
+    if (config.gpu_plugin.empty()) {
+      config.gpu_plugin = "xenos";
+    }
     // Non-game runtime settings are baked into the binary (not exposed in the
     // .ini, which carries only user-facing game settings): a full content
     // license, and keyboard/mouse input on with the mouse left uncaptured.
