@@ -442,8 +442,9 @@ Step 'Building zuma.exe, the SDK runtime and the Xenos GPU plugin'
 Invoke-LoggedBuild 'Game build' @('--build', '--preset', $preset) (Join-Path $logDir "$preset.log")
 
 $exe = Join-Path $buildDir 'zuma.exe'
-foreach ($name in @('zuma.exe', 'rexruntime.dll', 'rexgpu-xenos.dll')) {
-    if (-not (Test-Path (Join-Path $buildDir $name))) { Fail "Build finished but $buildDir\$name is missing." }
+# Non-Release configs suffix the SDK DLLs (rexruntimerd.dll / rexruntimed.dll).
+foreach ($name in @('zuma.exe', 'rexruntime*.dll', 'rexgpu-xenos*.dll')) {
+    if (-not (Get-ChildItem -Path (Join-Path $buildDir $name) -ErrorAction SilentlyContinue)) { Fail "Build finished but $buildDir\$name is missing." }
 }
 
 Step 'Done'

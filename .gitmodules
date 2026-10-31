@@ -1,3 +1,4 @@
 [submodule "thirdparty/rexglue-sdk"]
 	path = thirdparty/rexglue-sdk
 	url = https://github.com/springah/rexglue-sdk.git
+	branch = zuma/fpscr-host-threads

@@ -86,8 +86,8 @@ git clone -c core.symlinks=true --recurse-submodules https://github.com/springah
 ```
 
 The ReXGlue SDK is a submodule at `thirdparty/rexglue-sdk`, **pinned at a tagged
-release** (currently v0.9.2 from the [springah/rexglue-sdk](https://github.com/springah/rexglue-sdk)
-fork, the same pin daytona ships with). To develop against a live SDK checkout
+release** (currently v0.9.2 plus one fix, branch `zuma/fpscr-host-threads` of the
+[springah/rexglue-sdk](https://github.com/springah/rexglue-sdk) fork; see PORTS.md). To develop against a live SDK checkout
 instead, set `REXSDK_DIR` at configure time; when unset, the build uses the submodule.
 
 > **Windows:** clone with `-c core.symlinks=true` (as above) or the SDK's

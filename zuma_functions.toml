@@ -4,7 +4,15 @@
 # "Call to invalid or unregistered function" (pointer-table targets the static
 # scan missed) or when codegen mis-splits a function:
 #
-#   [functions]
+#   # The game's libjpeg error path is the classic setjmp/longjmp one: the loader
+# (sub_82167AE8) calls setjmp before jpeg_read_header, and its error_exit
+# (sub_82165BB8) longjmps back. Recompiled naively, longjmp just "returns" into
+# libjpeg with the loader's stack pointer, so the next epilogue restores r27-r31
+# from the wrong frame and read_markers dereferences cinfo == NULL. These two
+# keys make codegen route the CRT entry points through ppc_setjmp/ppc_longjmp.
+setjmp_address = 0x8235DBF0
+longjmp_address = 0x8235D9A0
+
 #   "0x8200XXXX" = {}                      # missed entry point
 #   "0x8200YYYY" = { end = 0x8200ZZZZ }    # corrected extent
 
