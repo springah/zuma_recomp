@@ -7,7 +7,7 @@ live in the [README](README.md).
 
 | OS | Build | Status |
 |----|-------|--------|
-| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 scaffolded, not yet booted (SDK v0.9.2) |
+| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 boots to the title screen; play untested (SDK v0.9.2 + 1) |
 | Steam Deck / Linux (x64) | `linux-amd64-release` preset | ⬜ untried |
 | macOS (arm64) | `mac-arm64-release` preset on an Apple Silicon Mac | ⬜ untried |
 
@@ -24,5 +24,5 @@ All builds link the `thirdparty/rexglue-sdk` submodule, pinned at **v0.9.2 + 1**
 plus one fix (host-side threads got a zeroed FPSCR shadow, so the first guest
 callback on the audio worker unmasked every FP exception and died with
 0xC000008F). Upstream has since tagged v0.10.0; moving
-to it is an open item once the port boots on the known-good pin. The manifest's
+to it is an open item now that the port boots on the known-good pin. The manifest's
 `sdk_version` must match the pinned tag.

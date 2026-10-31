@@ -9,9 +9,11 @@ A static recompilation of **Zuma** (PopCap / Oberon Media, Xbox 360 XBLA, 2005)
 for native PC execution, built on the [ReXGlue SDK](https://github.com/rexglue/rexglue-sdk)
 (a Xenia-derived runtime + PPC→C++ recompiler).
 
-**Status: bring-up.** The repository is scaffolded (manifest, build scripts,
-pinned SDK) and the shell `default.xex` recompiles; the port has not been booted
-yet. Nothing here is playable until the first boot is banked.
+**Status: early bring-up.** The port builds, boots and reaches the title screen
+("PRESS A TO START") on Windows with the Xenos D3D12 renderer. Play beyond the
+title is untested; expect it to break. Two recompilation bugs have been fixed so
+far (an FP-exception crash on host-side threads, fixed in the SDK fork, and a
+libjpeg `setjmp`/`longjmp` round trip, routed through the SDK's host `jmp_buf`).
 
 No copyrighted game files are included. This tree excludes the extracted game
 directory, `default.xex`, images and build outputs — you supply your own legally
