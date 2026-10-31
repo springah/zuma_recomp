@@ -17,7 +17,7 @@ if(NOT REXSDK_DIR AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/rexglue-sdk
 endif()
 
 if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/generated/rexglue.cmake")
-    message(FATAL_ERROR "generated/rexglue.cmake is missing: run scripts/regen.sh first (see README).")
+    message(FATAL_ERROR "generated/rexglue.cmake is missing: run scripts/regen.sh first (see README; it also emits this file).")
 endif()
 include(generated/rexglue.cmake)
 
@@ -43,4 +43,7 @@ endif()
 # Scoped to the app target so a version bump only recompiles main.cpp.
 target_compile_definitions(zuma PRIVATE ZUMA_VERSION_STRING="${PROJECT_VERSION}")
 
-rexglue_setup_target(zuma)
+# GPU_PLUGINS builds + stages rexgpu-xenos (the emulated Xenos GPU, the only
+# renderer this port has) next to the exe; without it the runtime has nothing to
+# draw with.
+rexglue_setup_target(zuma GPU_PLUGINS xenos)

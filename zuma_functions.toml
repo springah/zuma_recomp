@@ -9,3 +9,12 @@
 #   "0x8200YYYY" = { end = 0x8200ZZZZ }    # corrected extent
 
 [functions]
+
+# Exception-unwind funclets: a destructor loop ending in `bl 0x82111AD8`
+# (li r3,0 / li r4,0 first -- a rethrow, which never returns). The analyzer does
+# not know the callee is noreturn, so it ran past the bl through two words of
+# padding into the next function, whose body then carried a `beq` to a label
+# generated only in that next function ("use of undeclared label loc_820BA3D8").
+# Cap each funclet right after its bl.
+"0x820BA330" = { end = 0x820BA388 }   # ran into sub_820BA390
+"0x820BDEF0" = { end = 0x820BDF48 }   # ran into sub_820BDF50

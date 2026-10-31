@@ -40,6 +40,19 @@ if [ -z "${REXGLUE:-}" ] || { [ ! -x "$REXGLUE" ] && [ ! -f "$REXGLUE" ]; }; the
 fi
 echo "[regen] using $REXGLUE"
 
+# generated/rexglue.cmake (SDK discovery + rexglue_setup_target) is emitted by
+# `rexglue init`, not by codegen. init also writes a starter CMakeLists/main.cpp,
+# so run it in a scratch dir and keep only the cmake file.
+if [ ! -f generated/rexglue.cmake ]; then
+  echo "[regen] generated/rexglue.cmake missing; deriving it via 'rexglue init'"
+  tmp="$(mktemp -d)"
+  mkdir -p "$tmp/assets" && cp assets/default.xex "$tmp/assets/"
+  tmpw="$(cygpath -w "$tmp" 2>/dev/null || echo "$tmp")"
+  "$REXGLUE" init --project-name zuma --xex-path assets/default.xex --game-root assets --project-root "$tmpw" >/dev/null
+  mkdir -p generated && cp "$tmp/generated/rexglue.cmake" generated/rexglue.cmake
+  rm -rf "$tmp"
+fi
+
 echo "[regen] codegen zuma (single module)"
 "$REXGLUE" codegen zuma_manifest.toml
 echo "[regen] done -> generated/"
