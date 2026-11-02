@@ -3,7 +3,7 @@
 # SDK boilerplate lives in generated/rexglue.cmake (emitted by scripts/regen.sh).
 
 cmake_minimum_required(VERSION 3.25)
-project(zuma VERSION 0.1.0 LANGUAGES CXX)
+project(zuma VERSION 0.1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

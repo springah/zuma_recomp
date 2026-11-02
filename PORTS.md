@@ -7,7 +7,7 @@ live in the [README](README.md).
 
 | OS | Build | Status |
 |----|-------|--------|
-| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 boots to the title screen; play untested (SDK v0.9.2 + 1) |
+| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 v0.1.1: boots to the title screen; play untested (SDK fork v0.9.2 + 3 commits) |
 | Steam Deck / Linux (x64) | `linux-amd64-release` preset | ⬜ untried |
 | macOS (arm64) | `mac-arm64-release` preset on an Apple Silicon Mac | ⬜ untried |
 

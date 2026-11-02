@@ -13,7 +13,13 @@ for native PC execution, built on the [ReXGlue SDK](https://github.com/rexglue/r
 ("PRESS A TO START") on Windows with the Xenos D3D12 renderer. Play beyond the
 title is untested; expect it to break. Two recompilation bugs have been fixed so
 far (an FP-exception crash on host-side threads, fixed in the SDK fork, and a
-libjpeg `setjmp`/`longjmp` round trip, routed through the SDK's host `jmp_buf`).
+libjpeg `setjmp`/`longjmp` round trip, routed through the SDK's host `jmp_buf`),
+plus the host VSync fix shared with the sibling ports (`present_vsync`).
+
+**Latest release:** v0.1.1 (Windows), a pre-release bundle attached to the
+[GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.1).
+It contains no game data: unzip it and follow `RUN.txt` inside to add your own
+package. See [CHANGELOG.md](CHANGELOG.md).
 
 No copyrighted game files are included. This tree excludes the extracted game
 directory, `default.xex`, images and build outputs — you supply your own legally

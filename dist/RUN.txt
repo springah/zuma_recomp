@@ -1,0 +1,71 @@
+Zuma (recompiled) - public build - EARLY BRING-UP
+Xbox 360 / XBLA (2005, PopCap / Oberon Media) statically recompiled for PC. No
+game data is included - no content package, no game executable, no images, no
+audio; you must own the game and supply your own copy. This build does contain
+the game's own program code, recompiled, so it is only for people who own the
+game: do not redistribute it.
+Releases, source and bug reports: https://github.com/springah/zuma_recomp
+
+STATUS - READ THIS FIRST
+  This port boots to the title screen ("PRESS A TO START") and stays alive
+  there. Everything past the title is UNTESTED and expected to break. The
+  useful test is simply: does it reach the title on your PC, and what happens
+  when you press A. A crash with its log attached is a GOOD result for this
+  build - that is exactly what it is out to find.
+
+ADD YOUR GAME
+  Zuma is an XBLA title, so there is no disc. What you need is the LIVE /
+  STFS content package for the game, copied off your OWN Xbox 360's storage.
+  On the console it sits at
+    Content\0000000000000000\584107EF\000D0000\<40 hex digits>
+  (a file with no extension and a long hexadecimal name; its first four bytes
+  are the letters LIVE). Then, with Python 3 installed:
+
+    Windows:  drag the package onto extract_game.bat
+              (or copy it into this folder and double-click extract_game.bat)
+    Others:   python3 extract_game.py "<path to your package>"
+
+  That unpacks the package into assets\ next to zuma.exe - the whole package,
+  not just default.xex, because the game reads its data from that folder. If
+  the extractor says the file "is not an Xbox 360 LIVE/STFS package", you
+  pointed it at the wrong file: most likely an already-extracted default.xex
+  rather than the package that contains it.
+
+  Already have the package extracted? Put its contents in assets\ so that
+  assets\default.xex and the rest of the files sit directly inside it.
+
+TO PLAY
+  Once assets\ is populated, double-click zuma.exe. It auto-loads the assets\
+  folder next to it. A window opens (1920x1080 windowed by default; the game
+  itself renders at 1280x720 and is scaled to fit). Logs go to logs\ next to
+  the exe.
+
+REQUIREMENTS
+  - Windows 10/11 x64 with a Direct3D 12 GPU
+  - Microsoft Visual C++ Redistributable (x64):
+      https://aka.ms/vs/17/release/vc_redist.x64.exe
+
+CONTROLS
+  An Xbox controller works out of the box. Press F4 for the settings overlay to
+  see and rebind controls (keyboard included) and change display settings;
+  "Save to config" writes zuma.ini for you.
+
+SETTINGS AND LOGS
+  Edit zuma.ini next to the exe (window size, fullscreen, vsync, upscaler, log
+  level), then restart - it is read at startup. "vsync = true" (the default)
+  locks the game to your monitor's refresh and presents without tearing; on a
+  variable refresh rate display you can keep the pacing but let the window
+  present immediately again with "present_vsync = false" in the F4 cvar list.
+  Logs are written to logs\zuma_NNN.log next to the exe.
+
+BUG REPORTS
+  Open an issue at https://github.com/springah/zuma_recomp/issues. Say what
+  you did (did it reach the title? did you press A? what happened?) and attach
+  the newest file from logs\.
+
+LICENCES
+  This build links third-party open-source components; their licences are in
+  THIRD-PARTY-NOTICES.txt beside this file.
+
+Built with heavy use of AI tooling. Hobby project, no warranty. Zuma is a
+trademark of PopCap Games / Electronic Arts.
