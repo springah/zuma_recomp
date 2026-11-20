@@ -19,19 +19,19 @@ presets are untested.
 ## SDK pin
 
 All builds link the `thirdparty/rexglue-sdk` submodule, pinned at **v0.9.2 + 6**
-(branch `zuma/fpscr-host-threads`, `73f92ce`) of
+(branch `zuma/fpscr-host-threads`, `b07bdd8`) of
 [springah/rexglue-sdk](https://github.com/springah/rexglue-sdk): daytona's v0.9.2
 plus
 
-- `4e4f4bb` — host-side threads got a zeroed FPSCR shadow, so the first guest
+- `bd718f4` — host-side threads got a zeroed FPSCR shadow, so the first guest
   callback on the audio worker unmasked every FP exception and died with
   0xC000008F;
-- `185dff8`, `a8e56b9` — the `present_vsync` cvar (host presentation honours
+- `0d8924f`, `b6f3513` — the `present_vsync` cvar (host presentation honours
   VSync);
-- `d2e35ae` — clean exit when the title quits itself (Return to Arcade used to
+- `780d6cd` — clean exit when the title quits itself (Return to Arcade used to
   crash with 0xC0000374, or hang, in the SDK's teardown);
-- `3fe4824` — CI only: the fork's format check pinned to `ubuntu-24.04`;
-- `73f92ce` — `XamShowAchievementsUI` opens the achievements list (was a
+- `c214471` — CI only: the fork's format check pinned to `ubuntu-24.04`;
+- `b07bdd8` — `XamShowAchievementsUI` opens the achievements list (was a
   stub), with pad scrolling and closing.
 
 Upstream is now at v0.11.0. Moving to it is deferred: this fork line is 150+

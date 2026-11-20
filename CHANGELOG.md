@@ -5,6 +5,16 @@ per-OS zips attached to it. See [PORTS.md](PORTS.md) for the per-platform build
 and packaging notes. Everything here is early: the first level of each mode
 has been played, and nobody has finished a level yet.
 
+## Unreleased
+
+- **Building from source now works for everyone.** The SDK fork this repo pins
+  as a submodule (`springah/rexglue-sdk`) was private, so a fresh
+  `git clone --recurse-submodules` could not fetch it. It has been republished
+  as a public repository and `main` is re-pinned to it: the same SDK code, under
+  new commit hashes (the hashes quoted in this file and in PORTS.md are the new
+  ones). The tags v0.1.1 to v0.1.3 still pin the old hashes and cannot be built
+  from source; build from `main`, or use the release zips.
+
 ## v0.1.3 — 2026-11-20 (Windows, pre-release)
 
 The Achievements menu entry works. This is the build to test with a
@@ -17,7 +27,7 @@ controller.
   Start, Back or Esc. The game gets no input while it is open, and the press
   that closes it never reaches the game. Works from the main menu and from the
   pause menu. Tested with the keyboard only (which feeds the same pad state);
-  not yet with a real controller. SDK fork commit 73f92ce.
+  not yet with a real controller. SDK fork commit b07bdd8.
 - Keyboard menu presses are no longer replayed into the game after an overlay
   that owned the input is closed.
 
@@ -38,7 +48,7 @@ fixed.
   still pointed at it. With that order fixed the exit could hang instead,
   because a guest thread had gone away holding a host lock. The SDK now exits
   the process as soon as the title has ended, as it already did for a window
-  close. SDK fork commit d2e35ae. v0.1.1 has the crash; closing the window
+  close. SDK fork commit 780d6cd. v0.1.1 has the crash; closing the window
   there is clean.
 - Found after the release: the same teardown bug also made v0.1.1 crash
   (0xC0000374) after the "Entrypoint XEX not found" box, which is what a first
@@ -62,8 +72,8 @@ VSync fix carried over from the sibling ports.
   tearing flag; the `vsync` line in `zuma.ini` and the F4 VSync checkbox set
   both the guest pacing and the host present. Variable refresh rate users can
   keep the pacing but restore immediate presentation with
-  `present_vsync = false` in the F4 cvar list. SDK fork commits 185dff8 and
-  a8e56b9; same fix as springah/futari_recomp#5.
+  `present_vsync = false` in the F4 cvar list. SDK fork commits 0d8924f and
+  b6f3513; same fix as springah/futari_recomp#5.
 - The release zip ships `RUN.txt`, `extract_game.bat` + `extract_game.py` and
   the third-party licence bundle; no game data.
 
