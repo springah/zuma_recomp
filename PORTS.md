@@ -18,8 +18,8 @@ presets are untested.
 
 ## SDK pin
 
-All builds link the `thirdparty/rexglue-sdk` submodule, pinned at **v0.9.2 + 5**
-(branch `zuma/fpscr-host-threads`, `3fe4824`) of
+All builds link the `thirdparty/rexglue-sdk` submodule, pinned at **v0.9.2 + 6**
+(branch `zuma/fpscr-host-threads`, `73f92ce`) of
 [springah/rexglue-sdk](https://github.com/springah/rexglue-sdk): daytona's v0.9.2
 plus
 
@@ -30,8 +30,12 @@ plus
   VSync);
 - `d2e35ae` — clean exit when the title quits itself (Return to Arcade used to
   crash with 0xC0000374, or hang, in the SDK's teardown);
-- `3fe4824` — CI only: the fork's format check pinned to `ubuntu-24.04`.
+- `3fe4824` — CI only: the fork's format check pinned to `ubuntu-24.04`;
+- `73f92ce` — `XamShowAchievementsUI` opens the achievements list (was a
+  stub), with pad scrolling and closing; not in a release yet.
 
-Upstream has since tagged v0.10.0; moving
-to it is an open item now that the port boots on the known-good pin. The manifest's
-`sdk_version` must match the pinned tag.
+Upstream is now at v0.11.0. Moving to it is deferred: this fork line is 150+
+commits past upstream v0.9.0, a trial merge with upstream v0.10.1 conflicts in
+about 30 files (build system, both input drivers, the app class), and upstream's
+code generator changed, so the game would have to be regenerated and re-tested.
+The manifest's `sdk_version` must match the pinned tag.

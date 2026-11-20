@@ -20,9 +20,10 @@ only):
   saved) and Help work; Return to Arcade closes the game cleanly.
 
 Not tested yet: finishing a level, anything after the first level, and a real
-controller. Known gaps: the Achievements menu entry does nothing (the game asks
-the system for its achievements screen and the SDK has none to show), and
-Leaderboards only shows the game's own "Xbox Live members only" message.
+controller. Known gaps: Leaderboards only shows the game's own "Xbox Live
+members only" message, and in v0.1.2 the Achievements menu entry does nothing.
+On `main` that entry opens the achievements list (B closes it, the D-pad or
+left stick scrolls); that is not in a release yet.
 
 Three bugs have been fixed on the way: an FP-exception crash on host-side
 threads (SDK fork), a libjpeg `setjmp`/`longjmp` round trip (routed through the
@@ -108,7 +109,7 @@ git clone -c core.symlinks=true --recurse-submodules https://github.com/springah
 ```
 
 The ReXGlue SDK is a submodule at `thirdparty/rexglue-sdk`, **pinned at a tagged
-release** (currently v0.9.2 plus five commits, branch `zuma/fpscr-host-threads` of the
+release** (currently v0.9.2 plus six commits, branch `zuma/fpscr-host-threads` of the
 [springah/rexglue-sdk](https://github.com/springah/rexglue-sdk) fork; see PORTS.md). To develop against a live SDK checkout
 instead, set `REXSDK_DIR` at configure time; when unset, the build uses the submodule.
 

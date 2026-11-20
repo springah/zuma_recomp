@@ -5,6 +5,21 @@ per-OS zips attached to it. See [PORTS.md](PORTS.md) for the per-platform build
 and packaging notes. Everything here is early: the first level of each mode
 has been played, and nobody has finished a level yet.
 
+## Unreleased
+
+On `main`, not in a release zip yet.
+
+- **The Achievements menu entry now opens the achievements list.** The game
+  asks the system for its achievements screen (`XamShowAchievementsUI`), which
+  the SDK only stubbed. It now opens the SDK's achievements list as a system
+  UI: sized for a TV, scrolled with the D-pad or left stick, closed with B, A,
+  Start, Back or Esc. The game gets no input while it is open, and the press
+  that closes it never reaches the game. Works from the main menu and from the
+  pause menu. Tested with the keyboard only (which feeds the same pad state);
+  not yet with a real controller. SDK fork commit 73f92ce.
+- Keyboard menu presses are no longer replayed into the game after an overlay
+  that owned the input is closed.
+
 ## v0.1.2 — 2026-11-20 (Windows, pre-release)
 
 First build known to play past the title, with the crash on Return to Arcade
@@ -24,6 +39,9 @@ fixed.
   the process as soon as the title has ended, as it already did for a window
   close. SDK fork commit d2e35ae. v0.1.1 has the crash; closing the window
   there is clean.
+- Found after the release: the same teardown bug also made v0.1.1 crash
+  (0xC0000374) after the "Entrypoint XEX not found" box, which is what a first
+  run without game files shows. v0.1.2 exits cleanly there (exit code 1).
 - Known gaps: the Achievements menu entry does nothing (the game calls
   `XamShowAchievementsUI`, which the SDK only stubs), and Leaderboards shows
   the game's own "Xbox Live members only" message.

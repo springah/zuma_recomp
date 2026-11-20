@@ -13,11 +13,12 @@ STATUS - READ THIS FIRST
     - Gauntlet: through to its Game Over screen.
     - Main menu, pause menu, Options (both volume sliders, which are
       remembered) and Help. Return to Arcade closes the game.
+    - Achievements (main menu and pause menu) opens the achievements list:
+      D-pad or left stick scrolls, B closes.
   NOT tested yet: finishing a level, anything after the first level, and a
   real controller.
-  Known gaps: the Achievements menu entry does nothing, and Leaderboards only
-  shows the game's own "Xbox Live members only" message (there is no Xbox
-  Live here).
+  Known gap: Leaderboards only shows the game's own "Xbox Live members only"
+  message (there is no Xbox Live here).
   A crash or a hang with its log attached is still a GOOD result for this
   build - that is exactly what it is out to find.
 
