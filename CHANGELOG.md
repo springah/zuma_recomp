@@ -5,9 +5,10 @@ per-OS zips attached to it. See [PORTS.md](PORTS.md) for the per-platform build
 and packaging notes. Everything here is early: the first level of each mode
 has been played, and nobody has finished a level yet.
 
-## Unreleased
+## v0.1.3 — 2026-11-20 (Windows, pre-release)
 
-On `main`, not in a release zip yet.
+The Achievements menu entry works. This is the build to test with a
+controller.
 
 - **The Achievements menu entry now opens the achievements list.** The game
   asks the system for its achievements screen (`XamShowAchievementsUI`), which

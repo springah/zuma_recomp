@@ -18,23 +18,24 @@ only):
 - **Gauntlet:** plays through to its Game Over screen.
 - **Menus:** the main menu, pause menu, Options (both volume sliders, which are
   saved) and Help work; Return to Arcade closes the game cleanly.
+- **Achievements:** the menu entry opens the achievements list (the D-pad or
+  left stick scrolls, B closes it).
 
 Not tested yet: finishing a level, anything after the first level, and a real
-controller. Known gaps: Leaderboards only shows the game's own "Xbox Live
-members only" message, and in v0.1.2 the Achievements menu entry does nothing.
-On `main` that entry opens the achievements list (B closes it, the D-pad or
-left stick scrolls); that is not in a release yet.
+controller. Known gap: Leaderboards only shows the game's own "Xbox Live
+members only" message.
 
 Three bugs have been fixed on the way: an FP-exception crash on host-side
 threads (SDK fork), a libjpeg `setjmp`/`longjmp` round trip (routed through the
 SDK's host `jmp_buf`), and a crash on exit when the game quits itself (SDK
 fork) — plus the host VSync fix shared with the sibling ports (`present_vsync`).
 
-**Latest release:** v0.1.2 (Windows), a pre-release bundle attached to the
-[GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.2).
+**Latest release:** v0.1.3 (Windows), a pre-release bundle attached to the
+[GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.3).
 It contains no game data: unzip it and follow `RUN.txt` inside to add your own
 package. The older v0.1.1 crashes on the way out when you choose Return to
-Arcade; use v0.1.2. See [CHANGELOG.md](CHANGELOG.md).
+Arcade or start it without game files; use v0.1.3. See
+[CHANGELOG.md](CHANGELOG.md).
 
 No copyrighted game files are included. This tree excludes the extracted game
 directory, `default.xex`, images and build outputs — you supply your own legally

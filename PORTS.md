@@ -7,7 +7,7 @@ live in the [README](README.md).
 
 | OS | Build | Status |
 |----|-------|--------|
-| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 v0.1.2: plays past the title — Adventure level 1 and Gauntlet to Game Over, menus and options work; finishing a level and a controller are untested (SDK fork v0.9.2 + 5 commits) |
+| Windows (x64) | `build.ps1` (one shot: tools, SDK CLI, extract, regen, build), or by hand the `win-amd64-release` preset (clang++ GNU driver, MSVC ABI) → `out/build/win-amd64-release` | 🚧 v0.1.3: plays past the title — Adventure level 1 and Gauntlet to Game Over, menus, options and the Achievements list work; finishing a level and a controller are untested (SDK fork v0.9.2 + 6 commits) |
 | Steam Deck / Linux (x64) | `linux-amd64-release` preset | ⬜ untried |
 | macOS (arm64) | `mac-arm64-release` preset on an Apple Silicon Mac | ⬜ untried |
 
@@ -32,7 +32,7 @@ plus
   crash with 0xC0000374, or hang, in the SDK's teardown);
 - `3fe4824` — CI only: the fork's format check pinned to `ubuntu-24.04`;
 - `73f92ce` — `XamShowAchievementsUI` opens the achievements list (was a
-  stub), with pad scrolling and closing; not in a release yet.
+  stub), with pad scrolling and closing.
 
 Upstream is now at v0.11.0. Moving to it is deferred: this fork line is 150+
 commits past upstream v0.9.0, a trial merge with upstream v0.10.1 conflicts in
