@@ -5,15 +5,29 @@ per-OS zips attached to it. See [PORTS.md](PORTS.md) for the per-platform build
 and packaging notes. Everything here is early: the first level of each mode
 has been played, and nobody has finished a level yet.
 
-## Unreleased
+## v0.1.4 — 2026-11-20 (Windows, pre-release)
 
+A fix release for the way the game exits when it cannot start.
+
+- **A failed start no longer hangs on the way out.** Starting without game
+  files shows the "Entrypoint XEX not found" box. In v0.1.2 and v0.1.3 the
+  process then usually exited, but about one time in ten it stayed behind as a
+  window that had stopped responding: the SDK's shutdown force-ended its audio
+  thread, and when that thread happened to hold a lock the shutdown waited on
+  it forever. A failed start now ends the process directly, as closing the
+  window and Return to Arcade already do. Checked with 72 failed starts in a
+  row (v0.1.3: 2 hangs in 18). SDK fork commit 771522d.
+- **The binaries no longer record where they were built.** `zuma.exe` and
+  `rexruntime.dll` carried the full source paths of the build machine (the
+  compiler writes them for log and assertion messages). They now read
+  `./src/...`. Nothing changes in how the game runs.
 - **Building from source now works for everyone.** The SDK fork this repo pins
   as a submodule (`springah/rexglue-sdk`) was private, so a fresh
   `git clone --recurse-submodules` could not fetch it. It has been republished
-  as a public repository and `main` is re-pinned to it: the same SDK code, under
-  new commit hashes (the hashes quoted in this file and in PORTS.md are the new
-  ones). The tags v0.1.1 to v0.1.3 still pin the old hashes and cannot be built
-  from source; build from `main`, or use the release zips.
+  as a public repository and this repo is re-pinned to it: the same SDK code,
+  under new commit hashes (the hashes quoted in this file and in PORTS.md are
+  the new ones). The tags v0.1.1 to v0.1.3 still pin the old hashes and cannot
+  be built from source; build v0.1.4 or later, or use the release zips.
 
 ## v0.1.3 — 2026-11-20 (Windows, pre-release)
 

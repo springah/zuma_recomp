@@ -30,11 +30,12 @@ threads (SDK fork), a libjpeg `setjmp`/`longjmp` round trip (routed through the
 SDK's host `jmp_buf`), and a crash on exit when the game quits itself (SDK
 fork) — plus the host VSync fix shared with the sibling ports (`present_vsync`).
 
-**Latest release:** v0.1.3 (Windows), a pre-release bundle attached to the
-[GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.3).
+**Latest release:** v0.1.4 (Windows), a pre-release bundle attached to the
+[GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.4).
 It contains no game data: unzip it and follow `RUN.txt` inside to add your own
-package. The older v0.1.1 crashes on the way out when you choose Return to
-Arcade or start it without game files; use v0.1.3. See
+package. Older builds exit badly: v0.1.1 crashes on the way out when you choose
+Return to Arcade or start it without game files, and v0.1.2 and v0.1.3 can hang
+after a start without game files. Use v0.1.4. See
 [CHANGELOG.md](CHANGELOG.md).
 
 No copyrighted game files are included. This tree excludes the extracted game
