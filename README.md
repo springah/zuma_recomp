@@ -9,17 +9,32 @@ A static recompilation of **Zuma** (PopCap / Oberon Media, Xbox 360 XBLA, 2005)
 for native PC execution, built on the [ReXGlue SDK](https://github.com/rexglue/rexglue-sdk)
 (a Xenia-derived runtime + PPC→C++ recompiler).
 
-**Status: early bring-up.** The port builds, boots and reaches the title screen
-("PRESS A TO START") on Windows with the Xenos D3D12 renderer. Play beyond the
-title is untested; expect it to break. Two recompilation bugs have been fixed so
-far (an FP-exception crash on host-side threads, fixed in the SDK fork, and a
-libjpeg `setjmp`/`longjmp` round trip, routed through the SDK's host `jmp_buf`),
-plus the host VSync fix shared with the sibling ports (`present_vsync`).
+**Status: early, but it plays.** On Windows with the Xenos D3D12 renderer the
+port boots to the title and runs past it. Tested so far (2026-11-20, keyboard
+only):
+
+- **Adventure:** stage select, the instruction pages and the first level —
+  aiming, shooting, matches, scoring and losing a life all work.
+- **Gauntlet:** plays through to its Game Over screen.
+- **Menus:** the main menu, pause menu, Options (both volume sliders, which are
+  saved) and Help work; Return to Arcade closes the game cleanly.
+
+Not tested yet: finishing a level, anything after the first level, and a real
+controller. Known gaps: the Achievements menu entry does nothing (the game asks
+the system for its achievements screen and the SDK has none to show), and
+Leaderboards only shows the game's own "Xbox Live members only" message.
+
+Three bugs have been fixed on the way: an FP-exception crash on host-side
+threads (SDK fork), a libjpeg `setjmp`/`longjmp` round trip (routed through the
+SDK's host `jmp_buf`), and a crash on exit when the game quits itself (SDK
+fork) — plus the host VSync fix shared with the sibling ports (`present_vsync`).
 
 **Latest release:** v0.1.1 (Windows), a pre-release bundle attached to the
 [GitHub release](https://github.com/springah/zuma_recomp/releases/tag/v0.1.1).
 It contains no game data: unzip it and follow `RUN.txt` inside to add your own
-package. See [CHANGELOG.md](CHANGELOG.md).
+package. v0.1.1 predates the exit fix: choosing Return to Arcade there ends the
+game and then crashes on the way out (closing the window is clean). See
+[CHANGELOG.md](CHANGELOG.md).
 
 No copyrighted game files are included. This tree excludes the extracted game
 directory, `default.xex`, images and build outputs — you supply your own legally
@@ -94,7 +109,7 @@ git clone -c core.symlinks=true --recurse-submodules https://github.com/springah
 ```
 
 The ReXGlue SDK is a submodule at `thirdparty/rexglue-sdk`, **pinned at a tagged
-release** (currently v0.9.2 plus one fix, branch `zuma/fpscr-host-threads` of the
+release** (currently v0.9.2 plus five commits, branch `zuma/fpscr-host-threads` of the
 [springah/rexglue-sdk](https://github.com/springah/rexglue-sdk) fork; see PORTS.md). To develop against a live SDK checkout
 instead, set `REXSDK_DIR` at configure time; when unset, the build uses the submodule.
 

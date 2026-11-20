@@ -2,8 +2,31 @@
 
 Versions are per-repo; each release is a tag with a GitHub Release and the
 per-OS zips attached to it. See [PORTS.md](PORTS.md) for the per-platform build
-and packaging notes. Everything here is early bring-up: the port boots to the
-title screen and play beyond it is untested.
+and packaging notes. Everything here is early: the first level of each mode
+has been played, and nobody has finished a level yet.
+
+## Unreleased
+
+On `main`, not in a release zip yet.
+
+- **First play past the title (2026-11-20, Windows, keyboard).** Adventure
+  works through stage select, the instruction pages and the first level
+  (aiming, shooting, matches, score, losing a life); Gauntlet plays through to
+  its Game Over screen; the main menu, pause menu, Options (both volume
+  sliders, saved across runs) and Help work. Not tested: finishing a level,
+  anything after the first level, a real controller.
+- **Return to Arcade no longer crashes on the way out.** Quitting from the main
+  menu logged "Execution complete" and then died with heap corruption
+  (0xC0000374): the SDK destroyed the window before the input drivers that
+  still pointed at it. With that order fixed the exit could hang instead,
+  because a guest thread had gone away holding a host lock. The SDK now exits
+  the process as soon as the title has ended, as it already did for a window
+  close. SDK fork commit d2e35ae. v0.1.1 still has the crash; closing the
+  window there is clean.
+- Known gaps: the Achievements menu entry does nothing (the game calls
+  `XamShowAchievementsUI`, which the SDK only stubs), and Leaderboards shows
+  the game's own "Xbox Live members only" message.
+- `RUN.txt` now lists the keyboard defaults and the tested state.
 
 ## v0.1.1 — 2026-11-02 (Windows, pre-release)
 

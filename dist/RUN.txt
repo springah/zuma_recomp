@@ -1,4 +1,4 @@
-Zuma (recompiled) - public build - EARLY BRING-UP
+Zuma (recompiled) - public build - EARLY BUILD
 Xbox 360 / XBLA (2005, PopCap / Oberon Media) statically recompiled for PC. No
 game data is included - no content package, no game executable, no images, no
 audio; you must own the game and supply your own copy. This build does contain
@@ -7,10 +7,18 @@ game: do not redistribute it.
 Releases, source and bug reports: https://github.com/springah/zuma_recomp
 
 STATUS - READ THIS FIRST
-  This port boots to the title screen ("PRESS A TO START") and stays alive
-  there. Everything past the title is UNTESTED and expected to break. The
-  useful test is simply: does it reach the title on your PC, and what happens
-  when you press A. A crash with its log attached is a GOOD result for this
+  Early build, but it plays. Tested on Windows with the keyboard:
+    - Adventure: stage select, the instruction pages and the first level
+      (aiming, shooting, matches, score, losing a life).
+    - Gauntlet: through to its Game Over screen.
+    - Main menu, pause menu, Options (both volume sliders, which are
+      remembered) and Help. Return to Arcade closes the game.
+  NOT tested yet: finishing a level, anything after the first level, and a
+  real controller.
+  Known gaps: the Achievements menu entry does nothing, and Leaderboards only
+  shows the game's own "Xbox Live members only" message (there is no Xbox
+  Live here).
+  A crash or a hang with its log attached is still a GOOD result for this
   build - that is exactly what it is out to find.
 
 ADD YOUR GAME
@@ -46,9 +54,11 @@ REQUIREMENTS
       https://aka.ms/vs/17/release/vc_redist.x64.exe
 
 CONTROLS
-  An Xbox controller works out of the box. Press F4 for the settings overlay to
-  see and rebind controls (keyboard included) and change display settings;
-  "Save to config" writes zuma.ini for you.
+  Keyboard defaults: Space = A, Shift = B, Enter = Start, arrow keys = D-pad,
+  W A S D = left stick (A and D turn the frog). An Xbox controller is picked
+  up automatically, but has not been tested with this port yet. Press F4 for
+  the settings overlay to see and rebind controls (keyboard included) and
+  change display settings; "Save to config" writes zuma.ini for you.
 
 SETTINGS AND LOGS
   Edit zuma.ini next to the exe (window size, fullscreen, vsync, upscaler, log
@@ -60,8 +70,8 @@ SETTINGS AND LOGS
 
 BUG REPORTS
   Open an issue at https://github.com/springah/zuma_recomp/issues. Say what
-  you did (did it reach the title? did you press A? what happened?) and attach
-  the newest file from logs\.
+  you were doing (which mode, which level, what you pressed, what happened)
+  and attach the newest file from logs\.
 
 LICENCES
   This build links third-party open-source components; their licences are in
